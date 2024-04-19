@@ -9,4 +9,4 @@ dataBase = mysql.connector.connect(
 cursorObject = dataBase.cursor()
 cursorObject.execute("CREATE DATABASE crud")
 
-print("ALL DONE!")
+print("GANA PLEASE :(")
