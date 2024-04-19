@@ -29,6 +29,7 @@ def home(request):
         
         return render(request, 'home.html', {'records':records})
 
+# Logout 
 def logout_user(request):
     logout(request)
     messages.success(request, "Successfuly Logout!")
@@ -55,7 +56,7 @@ def register_user(request):
 
 
 
-
+# View Records
 def customer_record(request,pk):
     if request.user.is_authenticated:
         #Look Up Records
@@ -67,6 +68,7 @@ def customer_record(request,pk):
     
 
 
+# Delete Records
 def delete_record(request, pk):
     if request.user.is_authenticated:
         delete_it = Record.objects.get(id=pk)
@@ -76,7 +78,9 @@ def delete_record(request, pk):
     else:
         messages.success(request, "Must be login to delete")
         return redirect('home')
-    
+
+
+# Add Records  
 def add_record(request):
 	form = AddRecordForm(request.POST or None)
 	if request.user.is_authenticated:
@@ -89,7 +93,9 @@ def add_record(request):
 	else:
 		messages.success(request, "You Must Be Logged In...")
 		return redirect('home')
-     
+
+
+# Update Records    
 def update_record(request, pk):
 	if request.user.is_authenticated:
 		current_record = Record.objects.get(id=pk)
